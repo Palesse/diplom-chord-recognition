@@ -1,0 +1,74 @@
+Результаты работы алгоритма
+(при threshold = 0.1 и использовании librosa )
+
+Y - отлично
+N - некорректно
+YN - с мелкими неточностями
+NY - с большими неточностями
+
+C open base YN
+D open base YN
+E open base Y
+G open base Y
+A open base YN
+
+E open strum YN
+G open strum Y
+A open strum YN
+
+C barre base Y
+C# barre base Y
+D barre base Y
+D# barre base YN
+E barre base YN
+F barre base YN
+F# barre base Y
+G barre base Y
+G# barre base Y
+A barre base NY
+A# barre base Y
+B barre base Y
+
+C# barre strum NY
+D barre strum Y
+D# barre strum Y
+F barre strum Y
+F# barre strum Y
+G# barre strum Y
+A# barre strum Y
+B barre strum Y
+
+C# barre arp N
+F barre arp N
+F# barre arp YN
+G# barre arp YN
+A# barre arp NY
+B barre arp YN
+
+Dm open base NY
+Em open base Y
+Am open base Y
+
+Em open strum NY
+Am open strum Y
+
+Cm barre base Y
+C#m barre base YN
+D#m barre base Y
+Fm barre base Y
+F#m barre base Y
+Gm barre base Y
+G#m barre base Y
+A#m barre base Y
+Bm barre base Y
+
+Cm barre strum Y
+C#m barre strum Y
+Dm barre strum Y
+D#m barre strum Y
+Fm barre strum Y
+F#m barre strum Y
+Gm barre strum YN
+G#m barre strum Y
+A#m barre strum Y
+Bm barre strum Y

@@ -13,6 +13,7 @@ import json
 template = dict()
 major = ["G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#"]
 minor = ["Gm", "G#m", "Am", "A#m", "Bm", "Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m"]
+sus2 = ["Gsus2", "G#sus2", "Asus2", "A#sus2", "Bsus2", "Csus2", "C#sus2", "Dsus2", "D#sus2", "Esus2", "Fsus2", "F#sus2"]
 offset = 0
 num_chords = len(major)
 
@@ -20,9 +21,11 @@ num_chords = len(major)
 for chord in range(num_chords):
     template[major[chord]] = list()
     template[minor[chord]] = list()
+    template[sus2[chord]] = list()
     for note in range(num_chords):
         template[major[chord]].append(0)
         template[minor[chord]].append(0)
+        template[sus2[chord]].append(0)
 
 for chord in range(num_chords):
     for note in range(num_chords):

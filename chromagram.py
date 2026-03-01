@@ -6,7 +6,7 @@ This script computes 12 dimensional chromagram for chord detection
 """
 
 from __future__ import division
-from scipy.signal import hamming
+from scipy.signal.windows import hamming
 from scipy.fftpack import fft
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,8 +39,8 @@ def CQT_fast(x, fs, bins, fmin, fmax, M):
     K = int(bins * np.ceil(np.log2(fmax / fmin)))
     Q = 1 / (2 ** (1 / bins) - 1)
     nfft = np.int32(nearestPow2(np.ceil(Q * fs / fmin)))
-    tempKernel = np.zeros(nfft, dtype=np.complex_)
-    specKernel = np.zeros(nfft, dtype=np.complex_)
+    tempKernel = np.zeros(nfft, dtype=np.complex128)
+    specKernel = np.zeros(nfft, dtype=np.complex128)
     sparKernel = []
 
     # create sparse Kernel

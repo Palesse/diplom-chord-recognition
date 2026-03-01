@@ -2,7 +2,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 import json
-from chromagram import compute_chroma  # оставляем для возможности использования
+from chromagram import compute_chroma
 import librosa
 import argparse
 
@@ -61,7 +61,7 @@ def find_chords(
         chords: list,
         plot: bool = False,
         use_custom_chroma: bool = False,
-        threshold: float = 0.1  # добавляем параметр порога со значением по умолчанию
+        threshold: float = 0.1
 ):
     """
     Given a mono audio signal x, and its sampling frequency, fs,
@@ -129,7 +129,6 @@ def find_chords(
         id_chord[n] = np.argmax(cor_vec) + 1
 
     # apply threshold to identify no-chord zones
-    # Используем переданный порог вместо жестко заданного
     id_chord[np.where(max_cor < threshold * np.max(max_cor))] = 0
     final_chords = [chords[cid] for cid in id_chord]
 
@@ -156,7 +155,6 @@ def get_args():
                         help="threshold for no-chord detection (default: 0.1, range: 0.0-1.0)")
     args = parser.parse_args()
 
-    # Проверка корректности порога
     if args.threshold < 0 or args.threshold > 1:
         parser.error("Threshold must be between 0.0 and 1.0")
 

@@ -60,7 +60,8 @@ def find_chords(
         templates: list,
         chords: list,
         plot: bool = False,
-        use_custom_chroma: bool = False  # параметр для выбора метода вычисления хромаграммы
+        use_custom_chroma: bool = False,
+        threshold: float = 0.1  # добавляем параметр порога со значением по умолчанию
 ):
     """
     Given a mono audio signal x, and its sampling frequency, fs,
@@ -73,6 +74,7 @@ def find_chords(
         chords: list of chords to search over
         plot: if results should be plotted
         use_custom_chroma: if True, use compute_chroma from chromagram.py, otherwise use librosa
+        threshold: threshold for no-chord detection (fraction of max correlation)
     """
 
     # framing audio, window length = 8192, hop size = 1024
@@ -127,7 +129,7 @@ def find_chords(
         id_chord[n] = np.argmax(cor_vec) + 1
 
     # apply threshold to identify no-chord zones
-    threshold = 0.3
+    # Используем переданный порог вместо жестко заданного
     id_chord[np.where(max_cor < threshold * np.max(max_cor))] = 0
     final_chords = [chords[cid] for cid in id_chord]
 
@@ -137,7 +139,7 @@ def find_chords(
         plt.plot(timestamp, id_chord, marker="o")
         plt.xlabel("Time in seconds")
         plt.ylabel("Chords")
-        plt.title("Identified chords")
+        plt.title(f"Identified chords (threshold = {threshold})")
         plt.grid(True)
         plt.show()
 
@@ -150,13 +152,21 @@ def get_args():
     parser.add_argument("-p", "--plot", action="store_true", help="show plots")
     parser.add_argument("-c", "--custom_chroma", action="store_true",
                         help="use custom chroma from chromagram.py (default: use librosa)")
+    parser.add_argument("-t", "--threshold", type=float, default=0.1,
+                        help="threshold for no-chord detection (default: 0.1, range: 0.0-1.0)")
     args = parser.parse_args()
+
+    # Проверка корректности порога
+    if args.threshold < 0 or args.threshold > 1:
+        parser.error("Threshold must be between 0.0 and 1.0")
+
     return args
 
 
 def main(args):
     print("Input file is:", args.input_file)
     print("Using custom chroma:" if args.custom_chroma else "Using librosa chroma")
+    print(f"Threshold: {args.threshold}")
 
     directory = os.getcwd() + "/data/test_chords/"
 
@@ -179,7 +189,8 @@ def main(args):
         templates=templates,
         chords=chords,
         plot=args.plot,
-        use_custom_chroma=args.custom_chroma
+        use_custom_chroma=args.custom_chroma,
+        threshold=args.threshold  # передаём порог в функцию
     )
 
     # print chords with timestamps

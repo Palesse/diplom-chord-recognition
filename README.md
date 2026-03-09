@@ -49,3 +49,5 @@ python main.py -i "G_open_strum.wav" -p -c
 
 С настройкой порога (дефолтный порог = 0.1):
 python main.py -i "G_open_strum.wav" -p -t 0.3
+
+Также в консоль выводится скорость работы алгоритма

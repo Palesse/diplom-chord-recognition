@@ -1,0 +1,30 @@
+filename,true,predicted,correct_by_best,percent_correct,silence_time,all_percentages
+A#_barre_strum.wav,A#:maj,A#:maj,yes,100.00,4.587,A#:maj:100.0%
+A#m_barre_strum.wav,A#:min,A#:min,yes,100.00,3.768,A#:min:100.0%
+A_open_strum.wav,A:maj,A:maj,yes,98.25,5.046,A:maj:98.2%; A:min:1.8%
+Am_open_strum.wav,A:min,A:min,yes,100.00,2.896,A:min:100.0%
+B_barre_strum.wav,B:maj,B:maj,yes,100.00,2.634,B:maj:100.0%
+Bm_barre_strum.wav,B:min,B:min,yes,100.00,2.630,B:min:100.0%
+C#_barre_strum.wav,C#:maj,C#:maj,yes,98.28,6.583,C#:maj:98.3%; C#:min:1.7%
+C#m_barre_strum.wav,C#:min,C#:min,yes,100.00,2.749,C#:min:100.0%
+C_barre_strum_.wav,C:maj,C:maj,yes,100.00,3.684,C:maj:100.0%
+C_open_strum.wav,C:maj,C:maj,yes,71.93,2.204,C:maj:71.9%; E:min:22.8%; C:min:1.8%; G:maj:3.5%
+Cm_barre_strum.wav,C:min,C:min,yes,100.00,2.573,C:min:100.0%
+D#_barre_strum.wav,D#:maj,D#:maj,yes,100.00,2.148,D#:maj:100.0%
+D#m_barre_strum.wav,D#:min,D#:min,yes,100.00,2.379,D#:min:100.0%
+D_barre_strum.wav,D:maj,D:maj,yes,100.00,4.269,D:maj:100.0%
+Dm_barre_strum.wav,D:min,D:min,yes,100.00,2.427,D:min:100.0%
+E_open_strum.wav,E:maj,E:maj,yes,65.22,1.017,E:maj:65.2%; G#:min:14.5%; E:min:8.7%; B:maj:11.6%
+Em_open_strum.wav,E:min,E:min,yes,95.00,3.262,G:maj:2.5%; E:min:95.0%; B:maj:2.5%
+F#_barre_strum.wav,F#:maj,F#:maj,yes,91.18,3.478,F#:maj:91.2%; F#:min:5.9%; A#:min:2.9%
+F#m_barre_strum.wav,F#:min,F#:min,yes,100.00,1.758,F#:min:100.0%
+F_barre_strum.wav,F:maj,F:maj,yes,97.92,3.466,F:maj:97.9%; A:min:2.1%
+Fm_barre_strum.wav,F:min,F:min,yes,71.79,3.960,F:min:71.8%; F:maj:28.2%
+G#_barre_strum.wav,G#:maj,G#:maj,yes,97.06,1.451,G#:maj:97.1%; C:min:2.9%
+G#m_barre_strum.wav,G#:min,G#:min,yes,100.00,1.508,G#:min:100.0%
+G_open_strum.wav,G:maj,G:maj,yes,95.00,1.333,G:maj:95.0%; D:maj:2.5%; B:min:2.5%
+Gm_barre_strum.wav,G:min,G:min,yes,97.56,1.492,G:min:97.6%; D:maj:2.4%
+
+# Точность (% времени): ,95.17%
+# Точность (кол-во правильно предсказанных): ,100.00%
+# Суммарное время тишины (сек): ,73.302

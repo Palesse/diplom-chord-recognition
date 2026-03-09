@@ -1,0 +1,30 @@
+filename,true,predicted,correct_by_best,percent_correct,silence_time,all_percentages
+A#_barre_strum.wav,A#:maj,A#:maj,yes,100.00,0.488,A#:maj:100.0%
+A#m_barre_strum.wav,A#:min,A#:min,yes,100.00,0.000,A#:min:100.0%
+A_open_strum.wav,A:maj,A:maj,yes,100.00,8.615,A:maj:100.0%
+Am_open_strum.wav,A:min,A:min,yes,96.21,0.000,A:min:96.2%; F:maj:1.9%; D:min:1.9%
+B_barre_strum.wav,B:maj,B:maj,yes,98.01,0.000,B:maj:98.0%; G#:min:2.0%
+Bm_barre_strum.wav,B:min,B:min,yes,100.00,0.000,B:min:100.0%
+C#_barre_strum.wav,C#:maj,C#:maj,yes,31.98,0.000,E:min:29.4%; C#:maj:32.0%; D:min:11.2%; A#:min:1.0%; F:maj:2.0%; F:min:15.2%; E:maj:3.0%; G#:maj:6.1%
+C#m_barre_strum.wav,C#:min,C#:min,yes,100.00,0.000,C#:min:100.0%
+C_barre_strum_.wav,C:maj,C:maj,yes,98.38,1.138,A:maj:1.6%; C:maj:98.4%
+C_open_strum.wav,C:maj,C:maj,yes,71.66,0.000,C:maj:71.7%; E:min:28.3%
+Cm_barre_strum.wav,C:min,C:min,yes,85.64,1.950,C:min:85.6%; C:maj:14.4%
+D#_barre_strum.wav,D#:maj,D#:maj,yes,100.00,4.911,D#:maj:100.0%
+D#m_barre_strum.wav,D#:min,D#:min,yes,100.00,0.000,D#:min:100.0%
+D_barre_strum.wav,D:maj,D:maj,yes,100.00,6.827,D:maj:100.0%
+Dm_barre_strum.wav,D:min,D:min,yes,100.00,0.000,D:min:100.0%
+E_open_strum.wav,E:maj,E:maj,yes,60.14,0.000,E:min:12.0%; E:maj:60.1%; B:maj:15.9%; G#:min:12.0%
+Em_open_strum.wav,E:min,E:min,yes,38.54,1.300,E:maj:9.6%; C:maj:1.9%; A:min:3.8%; B:min:13.4%; G:maj:32.6%; E:min:38.5%
+F#_barre_strum.wav,F#:maj,F#:maj,yes,100.00,1.625,F#:maj:100.0%
+F#m_barre_strum.wav,F#:min,F#:min,yes,90.65,1.950,D:min:2.4%; F#:min:90.6%; F#:maj:6.9%
+F_barre_strum.wav,F:maj,F:maj,yes,82.18,0.325,F:min:16.3%; A:min:1.5%; F:maj:82.2%
+Fm_barre_strum.wav,F:min,F:min,yes,100.00,4.226,F:min:100.0%
+G#_barre_strum.wav,G#:maj,G#:maj,yes,93.01,0.000,G#:maj:93.0%; E:maj:4.7%; D#:maj:2.3%
+G#m_barre_strum.wav,G#:min,G#:min,yes,95.48,0.000,G#:min:95.5%; E:maj:2.3%; F:min:2.3%
+G_open_strum.wav,G:maj,G:maj,yes,95.85,0.000,G:maj:95.9%; E:min:4.1%
+Gm_barre_strum.wav,G:min,G:min,yes,53.87,3.576,G:min:53.9%; G:maj:46.1%
+
+# Точность (% времени): ,87.66%
+# Точность (кол-во правильно предсказанных): ,100.00%
+# Суммарное время тишины (сек): ,36.931

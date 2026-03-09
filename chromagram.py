@@ -94,7 +94,7 @@ def PCP(cqt, bins, M):
 
 def compute_chroma(x, fs):
 
-    fmin = 96
+    fmin = 65.4
     fmax = 5250
     bins = 12 # from 12 to 30
     M = 3

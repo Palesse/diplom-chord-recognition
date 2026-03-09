@@ -1,0 +1,34 @@
+filename,true,predicted,correct_by_best,percent_correct,silence_time,all_percentages
+A#_barre_base.wav,A#:maj,A#:maj,yes,92.61,0.000,A#:maj:92.6%; G:min:3.7%; D#:maj:3.7%
+A#m_barre_base.wav,A#:min,A#:min,yes,91.26,0.000,A#:min:91.3%; F#:min:2.9%; D#:maj:2.9%; A#:maj:2.9%
+A_barre_base.wav,A:maj,A:maj,yes,36.34,0.000,A:min:33.3%; A:maj:36.3%; F#:min:3.0%; D:min:27.3%
+A_open_base.wav,A:maj,A:maj,yes,64.39,0.000,B:min:20.8%; D#:maj:3.0%; A:min:11.9%; A:maj:64.4%
+Am_open_base.wav,A:min,A:min,yes,100.00,0.000,A:min:100.0%
+B_barre_base.wav,B:maj,B:maj,yes,79.79,0.000,B:min:6.7%; B:maj:79.8%; G#:maj:6.7%; A#:min:3.4%; E:min:3.4%
+Bm_barre_base.wav,B:min,B:min,yes,90.55,0.000,B:min:90.6%; G:maj:3.1%; G#:min:3.1%; E:maj:3.1%
+C#_barre_base.wav,C#:maj,C#:maj,yes,86.63,0.000,C#:maj:86.6%; F:min:4.5%; G#:maj:4.5%; C#:min:4.5%
+C#m_barre_base.wav,C#:min,C#:min,yes,60.25,0.000,E:min:23.8%; E:maj:4.0%; A:min:4.0%; A#:min:4.0%; F#:maj:4.0%; C#:min:60.3%
+C_barre_base.wav,C:maj,C:maj,yes,90.81,0.000,C:maj:90.8%; F#:maj:2.3%; F:maj:2.3%; C:min:4.6%
+C_open_base.wav,C:maj,C:maj,yes,77.12,0.000,G:maj:17.2%; C:maj:77.1%; F#:maj:2.9%; C:min:2.9%
+Cm_barre_base.wav,C:min,C:min,yes,83.65,0.000,D#:maj:8.2%; C:min:83.7%; F#:maj:4.1%; F:maj:4.1%
+D#_barre_base.wav,D#:maj,D#:maj,yes,68.61,0.000,D#:maj:68.6%; D#:min:12.6%; C:min:12.6%; G#:maj:6.3%
+D#m_barre_base.wav,D#:min,D#:min,yes,83.22,0.000,D#:min:83.2%; A:maj:4.2%; C:min:8.4%; D#:maj:4.2%
+D_barre_base.wav,D:maj,D:maj,yes,86.68,0.000,F#:min:4.4%; D:maj:86.7%; A:maj:4.4%; B:min:4.4%
+D_open_base.wav,D:maj,D:maj,yes,75.43,0.000,A:maj:16.4%; D:min:8.2%; D:maj:75.4%
+Dm_open_base.wav,D:min,D:min,yes,51.87,0.000,D:min:51.9%; D:maj:48.1%
+E_barre_base.wav,E:maj,E:maj,yes,56.19,0.000,E:maj:56.2%; A#:maj:4.9%; C#:min:14.6%; E:min:24.3%
+E_open_base.wav,E:maj,E:maj,yes,79.98,0.000,E:min:14.3%; E:maj:80.0%; B:maj:5.7%
+Em_open_base.wav,E:min,E:min,yes,73.81,0.000,B:maj:26.2%; E:min:73.8%
+F#_barre_base.wav,F#:maj,F#:maj,yes,82.17,0.000,F#:maj:82.2%; D#:min:3.0%; B:maj:8.9%; F#:min:5.9%
+F#m_barre_base.wav,F#:min,F#:min,yes,92.97,0.000,F#:min:93.0%; C#:maj:3.5%; B:maj:3.5%
+F_barre_base.wav,F:maj,F:maj,yes,64.33,0.000,F:maj:64.3%; A:min:11.9%; D:min:11.9%; F:min:11.9%
+Fm_barre_base.wav,F:min,F:min,yes,68.50,0.000,C:maj:6.3%; C#:maj:15.7%; C#:min:3.1%; A#:maj:6.3%; F:min:68.5%
+G#_barre_base.wav,G#:maj,G#:maj,yes,87.71,0.000,G#:maj:87.7%; C:maj:4.1%; F:min:4.1%; C#:maj:4.1%
+G#m_barre_base.wav,G#:min,G#:min,yes,87.75,0.000,G#:min:87.8%; E:maj:4.1%; C#:maj:8.2%
+G_barre_base.wav,G:maj,G:maj,yes,86.53,0.000,G:maj:86.5%; E:min:3.4%; D:maj:3.4%; C:maj:6.7%
+G_open_base.wav,G:maj,G:maj,yes,77.82,0.000,G:maj:77.8%; E:min:11.1%; D:maj:3.7%; G:min:7.4%
+Gm_barre_base.wav,G:min,G:min,yes,91.10,0.000,G:min:91.1%; C:maj:3.0%; G:maj:5.9%
+
+# Точность (% времени): ,78.21%
+# Точность (кол-во правильно предсказанных): ,100.00%
+# Суммарное время тишины (сек): ,0.000

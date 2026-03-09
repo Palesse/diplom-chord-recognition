@@ -5,6 +5,7 @@ import json
 from chromagram import compute_chroma
 import librosa
 import argparse
+import time  # Добавляем импорт для замера времени
 
 
 def get_templates(chords):
@@ -77,10 +78,10 @@ def find_chords(
         threshold: threshold for no-chord detection (fraction of max correlation)
     """
 
-    # framing audio, window length = 8192, hop size = 1024
+    # framing audio, window length = 8192, overlap = 1024
     nfft = int(8192 * 0.5)
-    hop_size = int(1024 * 0.5)
-    nFrames = int(np.round(len(x) / (nfft - hop_size)))
+    overlap = int(1024 * 0.5)
+    nFrames = int(np.round(len(x) / (nfft - overlap)))
 
     # zero padding to make signal length long enough to have nFrames
     x = np.append(x, np.zeros(nfft))
@@ -91,6 +92,10 @@ def find_chords(
     timestamp = np.zeros(nFrames)
     max_cor = np.zeros(nFrames)
 
+    # Для сбора статистики времени
+    frame_times = []
+    total_start_time = time.time()
+
     # compute timestamps and optionally framewise chroma using custom method
     chroma = None
 
@@ -98,29 +103,41 @@ def find_chords(
         # chromagram.py
         chroma = np.zeros((12, nFrames))
         for n in range(nFrames):
+            frame_start = time.time()
+
             xFrame[:, n] = x[start: start + nfft]
-            start = start + nfft - hop_size
-            timestamp[n] = n * (nfft - hop_size) / fs
+            start = start + nfft - overlap
+            timestamp[n] = n * (nfft - overlap) / fs
             chroma[:, n] = compute_chroma(xFrame[:, n], fs)
+
+            frame_time = time.time() - frame_start
+            frame_times.append(frame_time)
+
+            # Вывод времени для каждого 10-го фрейма или для первого/последнего
+            if n == 0 or n == nFrames - 1 or n % 10 == 0:
+                print(f"  Фрейм {n:3d}: {frame_time * 1000:6.2f} мс")
+
     else:
-        # Librosa
+        # Librosa - здесь сложно замерить пофреймово, т.к. librosa делает всё сразу
+        # Но мы можем замерить общее время и показать среднее
+        print("Librosa обрабатывает все фреймы сразу...")
+        librosa_start = time.time()
+
         for n in range(nFrames):
             xFrame[:, n] = x[start: start + nfft]
-            start = start + nfft - hop_size
-            timestamp[n] = n * (nfft - hop_size) / fs
+            start = start + nfft - overlap
+            timestamp[n] = n * (nfft - overlap) / fs
 
-        chroma = librosa.feature.chroma_stft(y=x, sr=fs, n_fft=nfft, hop_length=hop_size)
+        chroma = librosa.feature.chroma_stft(y=x, sr=fs, n_fft=nfft, hop_length=overlap)
 
-    # visualize the chroma if requested
-    if plot:
-        plt.figure(figsize=(10, 5))
-        librosa.display.specshow(chroma, sr=fs, x_axis="frames", y_axis="chroma")
-        plt.title("Chroma Features")
-        plt.colorbar()
-        plt.tight_layout()
-        plt.show()
+        librosa_time = time.time() - librosa_start
+        print(f"  Librosa общее время: {librosa_time * 1000:.2f} мс")
+        print(f"  Среднее на фрейм: {librosa_time * 1000 / nFrames:.2f} мс")
 
     # correlate 12D chroma vector with each chord template
+    print("\n--- Сопоставление с шаблонами ---")
+    match_start = time.time()
+
     for n in range(nFrames):
         cor_vec = np.zeros(num_chords)
         for ni in range(num_chords):
@@ -128,18 +145,48 @@ def find_chords(
         max_cor[n] = np.max(cor_vec)
         id_chord[n] = np.argmax(cor_vec) + 1
 
+    match_time = time.time() - match_start
+    print(f"Сопоставление с шаблонами: {match_time * 1000:.2f} мс")
+    print(f"Среднее на фрейм: {match_time * 1000 / nFrames:.2f} мс")
+
     # apply threshold to identify no-chord zones
     id_chord[np.where(max_cor < threshold * np.max(max_cor))] = 0
     final_chords = [chords[cid] for cid in id_chord]
 
+    # Общая статистика
+    total_time = time.time() - total_start_time
+    print(f"\n--- ОБЩАЯ СТАТИСТИКА ---")
+    print(f"Всего фреймов: {nFrames}")
+    print(f"Общее время обработки: {total_time * 1000:.2f} мс")
+
+    if use_custom_chroma and frame_times:
+        print(f"Среднее время на фрейм (chromagram): {np.mean(frame_times) * 1000:.2f} мс")
+        print(f"Мин время на фрейм: {np.min(frame_times) * 1000:.2f} мс")
+        print(f"Макс время на фрейм: {np.max(frame_times) * 1000:.2f} мс")
+
+    print(f"Время на фрейм (всего с шаблонами): {total_time * 1000 / nFrames:.2f} мс")
+
     if plot:
-        plt.figure()
-        plt.yticks(np.arange(num_chords + 1), chords)
-        plt.plot(timestamp, id_chord, marker="o")
-        plt.xlabel("Time in seconds")
-        plt.ylabel("Chords")
-        plt.title(f"Identified chords (threshold = {threshold})")
-        plt.grid(True)
+        # Создаем одно окно с двумя подграфиками
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+
+        # График 1: Chroma Features
+        img = librosa.display.specshow(chroma, sr=fs, x_axis="frames", y_axis="chroma", ax=ax1)
+        ax1.set_title("Хрома-вектор")
+        ax1.set_xlabel("Фреймы")
+        ax1.set_ylabel("PCP")
+        plt.colorbar(img, ax=ax1, format="%+2.0f dB")
+
+        # График 2: Identified chords
+        ax2.set_yticks(np.arange(num_chords + 1))
+        ax2.set_yticklabels(chords)
+        ax2.plot(timestamp, id_chord, marker="o", linestyle='-', markersize=3)
+        ax2.set_xlabel("Время (с)")
+        ax2.set_ylabel("Аккорды")
+        ax2.set_title(f"Предсказанные аккорды (порог = {threshold})")
+        ax2.grid(True, alpha=0.3)
+
+        plt.tight_layout()
         plt.show()
 
     return timestamp, final_chords

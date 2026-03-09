@@ -39,15 +39,15 @@ test_dir = "data/test_chords/base"
 Запуск алгоритма для отдельного файла:
 --------------------------------------
 
-python main.py -i "G_open_strum.wav"
+python main.py -i "strum/G_open_strum.wav"
 
 С графиками:
-python main.py -i "G_open_strum.wav" -p
+python main.py -i "strum/G_open_strum.wav" -p
 
 С алгоритмом EPCP вместо стандартного librosa:
-python main.py -i "G_open_strum.wav" -p -c
+python main.py -i "strum/G_open_strum.wav" -p -c
 
 С настройкой порога (дефолтный порог = 0.1):
-python main.py -i "G_open_strum.wav" -p -t 0.3
+python main.py -i "strum/G_open_strum.wav" -p -t 0.3
 
 Также в консоль выводится скорость работы алгоритма
